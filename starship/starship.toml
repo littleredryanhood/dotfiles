@@ -1,0 +1,121 @@
+# ~/.config/starship.toml
+format = """
+$shell\
+$os\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$cmd_duration $jobs $time\
+$line_break\
+$character"""
+
+
+[fill]
+symbol = " "
+
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
+
+# ---
+
+# Shows an icon depending on what distro it is running on
+[env_var.STARSHIP_DISTRO]
+format = '[$env_value](bold white) '
+variable = "STARSHIP_DISTRO"
+disabled = false
+
+# Shows the current username
+[env_var.USER]
+format = '[$env_value](cyan) '
+variable = "USER"
+disabled = false
+
+# Shows an icon depending on what device it is running on
+[env_var.STARSHIP_DEVICE]
+format = 'on [$env_value](bold yellow)'
+variable = "STARSHIP_DEVICE"
+disabled = false
+
+[shell]
+disabled = false
+bash_indicator = ""
+powershell_indicator = ""
+cmd_indicator = ""
+
+[os]
+disabled = false
+format = "$symbol "
+symbols.Ubuntu = ""
+symbols.Windows = ""
+
+# Shows the hostname
+[hostname]
+ssh_only = true
+format = "[$hostname](bold yellow) "
+disabled = false
+
+# Shows current directory
+[directory]
+truncation_length = 1
+truncation_symbol = "…/"
+home_symbol = " ~"
+read_only_style = "197"
+read_only = "  "
+format = "at [$path]($style)[$read_only]($read_only_style) "
+
+# Shows current git branch
+[git_branch]
+symbol = " "
+format = "via [$symbol$branch]($style) "
+# truncation_length = 4
+truncation_symbol = "…/"
+style = "bold green"
+
+# Shows current git status
+[git_status]
+format = '[\($all_status$ahead_behind\)]($style) '
+style = "bold green"
+conflicted = "🏳"
+up_to_date = " "
+untracked = " "
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+stashed = " "
+modified = " "
+staged = '[++\($count\)](green)'
+renamed = "襁 "
+deleted = " "
+
+# Shows kubernetes context and namespace
+[kubernetes]
+format = 'via [ﴱ $context\($namespace\)](bold purple) '
+disabled = false
+
+[username]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[helm]
+disabled = true
+
+[python]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[terraform]
+disabled = false 
